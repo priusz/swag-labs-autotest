@@ -1,5 +1,6 @@
 package com.codecool;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -60,6 +61,28 @@ public class HomePage extends BasePage{
     @FindBy(className = "inventory_item_name")
     private List<WebElement> productsInActualOrder;
 
+    //for addToCart
+    @FindBy(id = "add-to-cart-sauce-labs-backpack")
+    private WebElement backPackAddToCartButton;
+
+    @FindBy(id = "add-to-cart-sauce-labs-bike-light")
+    private WebElement bikeLightAddToCartButton;
+
+    @FindBy(id = "add-to-cart-sauce-labs-bolt-t-shirt")
+    private WebElement blackShirtAddToCartButton;
+
+    @FindBy(id = "add-to-cart-sauce-labs-fleece-jacket")
+    private WebElement jacketAddToCartButton;
+
+    @FindBy(id = "add-to-cart-sauce-labs-onesie")
+    private WebElement onesieAddToCartButton;
+
+    @FindBy(id = "add-to-cart-test.allthethings()-t-shirt-(red)")
+    private WebElement orangePuloverAddToCartButton;
+
+    @FindBy(css = "[data-test='shopping-cart-link']")
+    private WebElement shoppingCartButton;
+
     private void clickOnMenuButton(){
         menuButton.click();
     }
@@ -117,6 +140,40 @@ public class HomePage extends BasePage{
             productNamesInActualOrder.add(item.getText());
         }
         return productNamesInActualOrder;
+    }
+
+    public void clickOnBackPackAddToCartButton() {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", backPackAddToCartButton);
+        wait.until(ExpectedConditions.visibilityOf(backPackAddToCartButton)).click();
+    }
+
+    public void clickOnBikeLightAddToCartButton() {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", bikeLightAddToCartButton);
+        wait.until(ExpectedConditions.visibilityOf(bikeLightAddToCartButton)).click();
+    }
+
+    public void clickOnBlackShirtAddToCartButton() {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", blackShirtAddToCartButton);
+        wait.until(ExpectedConditions.visibilityOf(blackShirtAddToCartButton)).click();
+    }
+
+    public void clickOnJacketAddToCartButton() {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", jacketAddToCartButton);
+        wait.until(ExpectedConditions.visibilityOf(jacketAddToCartButton)).click();
+    }
+
+    public void clickOnOnesieAddToCartButton() {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", onesieAddToCartButton);
+        wait.until(ExpectedConditions.visibilityOf(onesieAddToCartButton)).click();
+    }
+
+    public void clickOnOrangePuloverAddToCartButton() {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", orangePuloverAddToCartButton);
+        wait.until(ExpectedConditions.visibilityOf(orangePuloverAddToCartButton)).click();
+    }
+
+    public void clickOnAddToCartButton() {
+        wait.until(ExpectedConditions.visibilityOf(shoppingCartButton)).click();
     }
 
 }
