@@ -2,7 +2,6 @@ package bdd.step_definitions;
 
 import com.codecool.CartPage;
 import com.codecool.HomePage;
-import com.codecool.ItemPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
@@ -11,7 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class CartSteps {
+public class CartStep {
 
     private WebDriver driver;
     private HomePage homePage;
