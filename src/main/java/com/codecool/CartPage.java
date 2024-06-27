@@ -28,6 +28,9 @@ public class CartPage extends BasePage{
     @FindBy(linkText = "Test.allTheThings() T-Shirt (Red)")
     private WebElement sauceLabsOrangePulover;
 
+    @FindBy(id = "checkout")
+    private WebElement checkoutButton;
+
     public boolean isSauceLabsBackpackPresent() {
         return sauceLabsBackpack.isDisplayed();
     }
@@ -50,5 +53,9 @@ public class CartPage extends BasePage{
 
     public boolean isSauceLabsOrangePuloverPresent() {
         return sauceLabsOrangePulover.isDisplayed();
+    }
+
+    public void clickCheckoutButton() {
+        checkoutButton.click();
     }
 }
