@@ -1,14 +1,13 @@
-Feature: Login Feature
+Feature: Logout Feature
 
-  Scenario Outline: Login with correct input scenario
-    Given I am a registered user
-    When I try to login with "<username>"
-    Then I see the products text
+  Scenario Outline: Logout
+    Given I am a logged in user as "<username>"
+    When I try to log out
+    Then I see the login button
 
     Examples:
       | username                |
       | standard_user           |
-      | locked_out_user         |
       | problem_user            |
       | performance_glitch_user |
       | error_user              |

@@ -19,10 +19,6 @@ public class LoginPage extends BasePage{
     @FindBy(id = "login-button")
     private WebElement loginButton;
 
-    @FindBy(css = "[data-test='title']")
-    private WebElement productTextField;
-
-
     private void fillUsernameField(String username) {
         usernameField.sendKeys(username);
     }
@@ -41,7 +37,7 @@ public class LoginPage extends BasePage{
         clickLoginButton();
     }
 
-    public String getProductTextField() {
-        return productTextField.getText();
+    public boolean isLoginButtonPresent() {
+        return loginButton.isDisplayed();
     }
 }

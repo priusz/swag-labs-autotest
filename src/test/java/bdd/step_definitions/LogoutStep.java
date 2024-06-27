@@ -11,8 +11,7 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-
-public class LoginStep {
+public class LogoutStep {
 
     private WebDriver driver;
     private LoginPage loginPage;
@@ -27,24 +26,24 @@ public class LoginStep {
         homePage = new HomePage(driver);
     }
 
-    @Given("I am a registered user")
-    public void i_am_a_registered_user() {
+    @Given("I am a logged in user as {string}")
+    public void i_am_a_logged_in_user(String username) {
         driver.get("https://www.saucedemo.com/");
-        System.out.println("Registered user");
-    }
-
-    @When("I try to login with {string}")
-    public void i_try_to_login_with_username_password(String username) {
         loginPage.handleLogin(username, password);
-        System.out.println("Type in the username and the password");
+        System.out.println("I am logging in user as " + username);
     }
 
-    @Then("I see the products text")
-    public void i_see_the_products_text() {
-        String actual = homePage.getProductTextField();
-        String expected = "Products";
-        Assertions.assertEquals(expected, actual);
-        System.out.println("I see the Product text");
+    @When("I try to log out")
+    public void i_try_to_log_out() {
+        homePage.handleLogout();
+        System.out.println("I click on the logout button");
+    }
+
+    @Then("I see the login button")
+    public void i_see_the_login_button() {
+        boolean isLoginButtonPresent = loginPage.isLoginButtonPresent();
+        Assertions.assertTrue(isLoginButtonPresent);
+        System.out.println("I see the login button");
     }
 
     @After
