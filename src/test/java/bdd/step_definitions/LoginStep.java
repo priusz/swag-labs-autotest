@@ -6,6 +6,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -37,6 +38,9 @@ public class LoginStep {
 
     @Then("I see the products text")
     public void i_see_the_products_text() {
+        String actual = loginPage.getProductTextField();
+        String expected = "Products";
+        Assertions.assertEquals(expected, actual);
         System.out.println("I see the Product text");
     }
 
