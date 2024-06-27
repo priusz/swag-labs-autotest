@@ -2,6 +2,7 @@ package bdd.step_definitions;
 
 import com.codecool.HomePage;
 import com.codecool.LoginPage;
+import com.codecool.config.WebDriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,14 +23,17 @@ public class OrderItemsStep {
     private final String password = System.getenv("password");
 
     @Before
-    public void setUp() {
-        driver = new ChromeDriver();
+    public void setUp() throws MalformedURLException {
+        String browser = System.getProperty("browser", "chrome"); // Default to chrome if not specified
+        driver = WebDriverFactory.createWebDriver(browser);
         driver.manage().window().maximize();
         homePage = new HomePage(driver);
     }
 
     @When("I try to order the items by {string}")
     public void i_try_to_order_the_items_by_filter(String filter) {
+        homePage.clickProductSortButton();
+        homePage.sortItemsByNamesDesc();
         if (filter.equals("A - Z")) homePage.sortItemsByNamesAsc();
         else if (filter.equals("Z - A")) homePage.sortItemsByNamesDesc();
         System.out.println("Order the items by " + filter);

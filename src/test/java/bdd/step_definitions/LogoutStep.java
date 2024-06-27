@@ -2,6 +2,7 @@ package bdd.step_definitions;
 
 import com.codecool.HomePage;
 import com.codecool.LoginPage;
+import com.codecool.config.WebDriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
@@ -11,6 +12,8 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.net.MalformedURLException;
+
 public class LogoutStep {
 
     private WebDriver driver;
@@ -19,8 +22,9 @@ public class LogoutStep {
     private final String password = System.getenv("password");
 
     @Before
-    public void setUp() {
-        driver = new ChromeDriver();
+    public void setUp() throws MalformedURLException {
+        String browser = System.getProperty("browser", "chrome"); // Default to chrome if not specified
+        driver = WebDriverFactory.createWebDriver(browser);
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);

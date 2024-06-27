@@ -2,6 +2,7 @@ package bdd.step_definitions;
 
 import com.codecool.HomePage;
 import com.codecool.LoginPage;
+import com.codecool.config.WebDriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
@@ -9,10 +10,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.net.MalformedURLException;
+import java.util.logging.Logger;
 
 public class LoginStep {
+
+    private static final Logger logger = Logger.getLogger(LoginStep.class.getName());
 
     private WebDriver driver;
     private LoginPage loginPage;
@@ -20,11 +24,16 @@ public class LoginStep {
     private final String password = System.getenv("password");
 
     @Before
-    public void setUp() {
-        driver = new ChromeDriver();
+    public void setUp() throws MalformedURLException {
+        logger.info("Starting setup...");
+        String browser = System.getProperty("browser", "chrome"); // Default to chrome if not specified
+        logger.info("Browser: " + browser);
+        driver = WebDriverFactory.createWebDriver(browser);
+        logger.info("WebDriver initialized");
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
+        logger.info("Setup completed");
     }
 
     @Given("I am a registered user")
@@ -49,6 +58,8 @@ public class LoginStep {
 
     @After
     public void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }

@@ -48,13 +48,13 @@ public class HomePage extends BasePage{
     @FindBy(css = "[data-test='item-3-title-link'] [data-test]")
     private WebElement orangePuloverHeader;
 
-    @FindBy(css = ".product_sort_container")
+    @FindBy(className = "product_sort_container")
     private WebElement productSortButton;
 
     @FindBy(linkText = "Name (A to Z)")
     private WebElement sortByNameAscButton;
 
-    @FindBy(linkText = "Name (Z to A)")
+    @FindBy(css = "[value=\"za\"]")
     private WebElement sortByNameDescButton;
 
     @FindBy(className = "inventory_item_name")
@@ -99,6 +99,10 @@ public class HomePage extends BasePage{
     public void handleLogout(){
         clickOnMenuButton();
         clickOnLogoutButton();
+    }
+
+    public void clickProductSortButton() {
+        productSortButton.click();
     }
 
     public void sortItemsByNamesAsc(){
