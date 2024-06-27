@@ -1,6 +1,6 @@
-Feature: Order Items Feature
+Feature: Description
 
-  Scenario Outline: Order the items
+  Scenario Outline: See the description
     Given I am a logged in user as "<username>"
     When I want to see a description of an "<item>"
     Then I see the selected item's "<description>"
