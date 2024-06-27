@@ -18,7 +18,6 @@ public class OrderItemsStep {
 
     private WebDriver driver;
     private HomePage homePage;
-    private final String password = System.getenv("password");
 
     @Before
     public void setUp() {

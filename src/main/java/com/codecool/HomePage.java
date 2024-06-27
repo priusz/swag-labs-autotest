@@ -16,7 +16,7 @@ public class HomePage extends BasePage{
 
     public HomePage(WebDriver driver) {
         super(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(4));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     //for login
@@ -68,27 +68,27 @@ public class HomePage extends BasePage{
         wait.until(ExpectedConditions.visibilityOf(logoutButton)).click();
     }
 
-    private void clickOnFirstHeader() {
+    public void clickOnBackpackHeader() {
         wait.until(ExpectedConditions.visibilityOf(backPackHeader)).click();
     }
 
-    private void clickOnSecondHeader() {
+    public void clickOnBikeLightHeader() {
         wait.until(ExpectedConditions.visibilityOf(bikeLightHeader)).click();
     }
 
-    private void clickOnThirdHeader() {
+    public void clickOnBlackShirtHeader() {
         wait.until(ExpectedConditions.visibilityOf(blackShirtHeader)).click();
     }
 
-    private void clickOnFourthHeader() {
+    public void clickOnJacketHeader() {
         wait.until(ExpectedConditions.visibilityOf(jacketHeader)).click();
     }
 
-    private void clickOnFifthHeader() {
+    public void clickOnOnesieHeader() {
         wait.until(ExpectedConditions.visibilityOf(onesieHeader)).click();
     }
 
-    private void clickOnSixthHeader() {
+    public void clickOnOrangePuloverHeader() {
         wait.until(ExpectedConditions.visibilityOf(orangePuloverHeader)).click();
     }
 
