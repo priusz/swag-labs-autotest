@@ -17,6 +17,7 @@ public class LogoutStep {
     private LoginPage loginPage;
     private HomePage homePage;
     private final String password = System.getenv("password");
+    private final String url = System.getenv("base_url");
 
     @Before
     public void setUp() {
@@ -28,7 +29,7 @@ public class LogoutStep {
 
     @Given("I am a logged in user as {string}")
     public void i_am_a_logged_in_user(String username) {
-        driver.get("https://www.saucedemo.com/");
+        driver.get(url);
         loginPage.handleLogin(username, password);
         System.out.println("I am logging in user as " + username);
     }
