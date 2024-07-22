@@ -1,7 +1,7 @@
 package bdd.step_definitions;
 
-import com.codecool.HomePage;
-import com.codecool.ItemPage;
+import com.codecool.pages.HomePage;
+import com.codecool.pages.ItemPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
@@ -9,10 +9,6 @@ import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class DescriptionStep {
 

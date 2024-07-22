@@ -1,7 +1,7 @@
 package bdd.step_definitions;
 
-import com.codecool.CartPage;
-import com.codecool.HomePage;
+import com.codecool.pages.CartPage;
+import com.codecool.pages.HomePage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;

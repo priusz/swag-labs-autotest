@@ -1,12 +1,9 @@
 package bdd.step_definitions;
 
-import com.codecool.CartPage;
-import com.codecool.CheckOutPage;
-import com.codecool.HomePage;
+import com.codecool.pages.CheckOutPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

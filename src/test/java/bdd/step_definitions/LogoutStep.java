@@ -1,7 +1,7 @@
 package bdd.step_definitions;
 
-import com.codecool.HomePage;
-import com.codecool.LoginPage;
+import com.codecool.pages.HomePage;
+import com.codecool.pages.LoginPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;

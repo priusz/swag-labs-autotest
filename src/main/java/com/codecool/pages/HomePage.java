@@ -1,4 +1,4 @@
-package com.codecool;
+package com.codecool.pages;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
