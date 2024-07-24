@@ -22,15 +22,7 @@ public class HookTest {
     private LoginPage loginPage;
 
     private HookTest() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-first-run");
-        options.addArguments("--no-default-browser-check");
-        options.addArguments("--disable-default-apps");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--disable-popup-blocking");
-        options.addArguments("--start-maximized");
-        driver = new ChromeDriver(options);
-
+        driver = new ChromeDriver();
         cartPage = new CartPage(driver);
         checkOutPage = new CheckOutPage(driver);
         homePage = new HomePage(driver);
