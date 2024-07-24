@@ -52,10 +52,10 @@ public class HomePage extends BasePage{
     @FindBy(css = ".product_sort_container")
     private WebElement productSortButton;
 
-    @FindBy(linkText = "Name (A to Z)")
+    @FindBy(css = "option[value='az']")
     private WebElement sortByNameAscButton;
 
-    @FindBy(linkText = "Name (Z to A)")
+    @FindBy(css = "option[value='za']")
     private WebElement sortByNameDescButton;
 
     @FindBy(className = "inventory_item_name")
@@ -81,6 +81,9 @@ public class HomePage extends BasePage{
     private WebElement orangePuloverAddToCartButton;
 
     @FindBy(css = "[data-test='shopping-cart-link']")
+    private WebElement addToCartButton;
+
+    @FindBy(css = "[data-test='shopping-cart-badge']")
     private WebElement shoppingCartButton;
 
     private void clickOnMenuButton(){
@@ -173,7 +176,11 @@ public class HomePage extends BasePage{
     }
 
     public void clickOnAddToCartButton() {
-        wait.until(ExpectedConditions.visibilityOf(shoppingCartButton)).click();
+        wait.until(ExpectedConditions.visibilityOf(addToCartButton)).click();
+    }
+
+    public void clickOnShopToCartButton() {
+        wait.until(ExpectedConditions.visibilityOf(addToCartButton)).click();
     }
 
 }

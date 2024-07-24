@@ -2,7 +2,7 @@ Feature: Checkout
 
   Scenario Outline: Checkout
     Given I am a logged in user as "<username>"
-    When I add to the cart some "<items>"
+    When I add to the cart some "<items>" and click on checkout
     Then I can checkout and finish my order with "<firstname>" "<lastname>" "<postalCode>"
 
     Examples:

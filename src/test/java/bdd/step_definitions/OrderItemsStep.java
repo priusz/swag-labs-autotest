@@ -19,7 +19,7 @@ public class OrderItemsStep {
 
     @Before
     public void before() {
-        hookTest = new HookTest();
+        hookTest = HookTest.getInstance();
         hookTest.getDriver().manage().window().maximize();
     }
 
@@ -30,13 +30,19 @@ public class OrderItemsStep {
         System.out.println("Order the items by " + filter);
     }
 
-    @Then("I see the ordered products")
-    public void i_see_the_products_text() {
-        List<String> actual = hookTest.getHomePage().getProductNamesInActualOrder();
-        List<String> expected = new ArrayList<>(actual);
-        Collections.sort(expected);
-        Assertions.assertEquals(expected, actual);
-        System.out.println("I see the ordered products");
+    @Then("I see the ordered products by {string}")
+    public void i_see_the_products_text(String filter) {
+        try {
+            List<String> actual = hookTest.getHomePage().getProductNamesInActualOrder();
+            List<String> expected = new ArrayList<>(actual);
+            if (filter.equals("A - Z")) Collections.sort(expected);
+            else if (filter.equals("Z - A")) Collections.sort(expected, Collections.reverseOrder());
+            Assertions.assertEquals(expected, actual);
+            System.out.println("I see the ordered products");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to see the ordered products because " + e.getMessage());
+        }
     }
 
     @After

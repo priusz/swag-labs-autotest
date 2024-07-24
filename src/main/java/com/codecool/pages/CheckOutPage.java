@@ -4,11 +4,18 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CheckOutPage extends BasePage {
 
+    private WebDriverWait wait;
+
     public CheckOutPage(WebDriver driver) {
         super(driver);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));;
     }
 
     @FindBy(id = "first-name")
@@ -30,17 +37,17 @@ public class CheckOutPage extends BasePage {
     private WebElement completeText;
 
     private void fillFirstNameField(String firstName) {
-        firstNameField.clear();
+        wait.until(ExpectedConditions.visibilityOf(firstNameField)).clear();
         firstNameField.sendKeys(firstName);
     }
 
     private void fillLastNameField(String lastName) {
-        lastNameField.clear();
+        wait.until(ExpectedConditions.visibilityOf(lastNameField)).clear();
         lastNameField.sendKeys(lastName);
     }
 
     private void fillPostalCodeField(String postalCode) {
-        postalCodeField.clear();
+        wait.until(ExpectedConditions.visibilityOf(postalCodeField)).clear();
         postalCodeField.sendKeys(postalCode);
     }
 
