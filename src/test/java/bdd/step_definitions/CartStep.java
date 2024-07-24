@@ -12,26 +12,22 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class CartStep {
 
-    private WebDriver driver;
-    private HomePage homePage;
-    private CartPage cartPage;
+    private HookTest hookTest;
 
     @Before
-    public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        homePage = new HomePage(driver);
-        cartPage = new CartPage(driver);
+    public void before() {
+        hookTest = new HookTest();
+        hookTest.getDriver().manage().window().maximize();
     }
 
     @When("I add to the cart some {string}")
     public void i_add_to_the_cart_some_items(String items) {
-        if (items.contains("backpack")) homePage.clickOnBackPackAddToCartButton();
-        else if (items.contains("bike light")) homePage.clickOnBikeLightAddToCartButton();
-        else if (items.contains("black shirt")) homePage.clickOnBlackShirtAddToCartButton();
-        else if (items.contains("jacket")) homePage.clickOnJacketAddToCartButton();
-        else if (items.contains("onesie")) homePage.clickOnOnesieAddToCartButton();
-        else if (items.contains("orange pulover")) homePage.clickOnOrangePuloverAddToCartButton();
+        if (items.contains("backpack")) hookTest.getHomePage().clickOnBackPackAddToCartButton();
+        else if (items.contains("bike light")) hookTest.getHomePage().clickOnBikeLightAddToCartButton();
+        else if (items.contains("black shirt")) hookTest.getHomePage().clickOnBlackShirtAddToCartButton();
+        else if (items.contains("jacket")) hookTest.getHomePage().clickOnJacketAddToCartButton();
+        else if (items.contains("onesie")) hookTest.getHomePage().clickOnOnesieAddToCartButton();
+        else if (items.contains("orange pulover")) hookTest.getHomePage().clickOnOrangePuloverAddToCartButton();
         System.out.println("I add items to the cart: " + items);
     }
 
@@ -39,29 +35,29 @@ public class CartStep {
     public void i_see_the_selected_items_in_the_cart(String items) {
         boolean isAllItemsPresent = true;
         if (items.contains("backpack")) {
-            if (!cartPage.isSauceLabsBackpackPresent()) isAllItemsPresent = false;
+            if (!hookTest.getCartPage().isSauceLabsBackpackPresent()) isAllItemsPresent = false;
         }
         else if (items.contains("bike light")) {
-            if (!cartPage.isSauceLabsBikeLightPresent()) isAllItemsPresent = false;
+            if (!hookTest.getCartPage().isSauceLabsBikeLightPresent()) isAllItemsPresent = false;
         }
         else if (items.contains("black shirt")) {
-            if (!cartPage.isSauceLabsBlackShirtPresent()) isAllItemsPresent = false;
+            if (!hookTest.getCartPage().isSauceLabsBlackShirtPresent()) isAllItemsPresent = false;
         }
         else if (items.contains("jacket")) {
-            if (!cartPage.isSauceLabsJacketPresent()) isAllItemsPresent = false;
+            if (!hookTest.getCartPage().isSauceLabsJacketPresent()) isAllItemsPresent = false;
         }
         else if (items.contains("onesie")) {
-            if (!cartPage.isSauceLabsOnesiePresent()) isAllItemsPresent = false;
+            if (!hookTest.getCartPage().isSauceLabsOnesiePresent()) isAllItemsPresent = false;
         }
         else if (items.contains("orange pulover")) {
-            if (!cartPage.isSauceLabsOrangePuloverPresent()) isAllItemsPresent = false;
+            if (!hookTest.getCartPage().isSauceLabsOrangePuloverPresent()) isAllItemsPresent = false;
         }
         Assertions.assertTrue(isAllItemsPresent);
         System.out.println("I see the selected item's in the cart: " + items);
     }
 
     @After
-    public void tearDown() {
-        driver.quit();
+    public void after() {
+        hookTest.tearDown();
     }
 }

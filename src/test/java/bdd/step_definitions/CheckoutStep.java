@@ -10,27 +10,25 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class CheckoutStep {
 
-    private WebDriver driver;
-    private CheckOutPage checkOutPage;
+    private HookTest hookTest;
 
     @Before
-    public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        checkOutPage = new CheckOutPage(driver);
+    public void before() {
+        hookTest = new HookTest();
+        hookTest.getDriver().manage().window().maximize();
     }
 
     @Then("I can checkout and finish my order with {string} {string} {string}")
     public void i_see_the_selected_items_in_the_cart(String firstname, String lastname, String postalCode) {
-        checkOutPage.handleAddInformations(firstname, lastname, postalCode);
-        String actualMessage = checkOutPage.getCompleteText();
+        hookTest.getCheckOutPage().handleAddInformations(firstname, lastname, postalCode);
+        String actualMessage = hookTest.getCheckOutPage().getCompleteText();
         String expectedMessage = "Thank you for your order!";
         Assertions.assertEquals(expectedMessage, actualMessage);
         System.out.println("I finish and checkout my order.");
     }
 
     @After
-    public void tearDown() {
-        driver.quit();
+    public void after() {
+        hookTest.tearDown();
     }
 }

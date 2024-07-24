@@ -12,40 +12,36 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DescriptionStep {
 
-    private WebDriver driver;
-    private HomePage homePage;
-    private ItemPage itemPage;
+  private HookTest hookTest;
 
     @Before
-    public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        homePage = new HomePage(driver);
-        itemPage = new ItemPage(driver);
+    public void before() {
+        hookTest = new HookTest();
+        hookTest.getDriver().manage().window().maximize();
     }
 
     @When("I want to see a description of an {string}")
     public void i_want_to_see_a_description_of_an_item(String itemName) {
         switch (itemName) {
-            case "backpack" -> homePage.clickOnBackpackHeader();
-            case "bike light" -> homePage.clickOnBikeLightHeader();
-            case "black shirt" -> homePage.clickOnBlackShirtHeader();
-            case "jacket" -> homePage.clickOnJacketHeader();
-            case "onesie" -> homePage.clickOnOnesieHeader();
-            case "orange pulover" -> homePage.clickOnOrangePuloverHeader();
+            case "backpack" -> hookTest.getHomePage().clickOnBackpackHeader();
+            case "bike light" -> hookTest.getHomePage().clickOnBikeLightHeader();
+            case "black shirt" -> hookTest.getHomePage().clickOnBlackShirtHeader();
+            case "jacket" -> hookTest.getHomePage().clickOnJacketHeader();
+            case "onesie" -> hookTest.getHomePage().clickOnOnesieHeader();
+            case "orange pulover" -> hookTest.getHomePage().clickOnOrangePuloverHeader();
         }
         System.out.println("I click on an item, what i want to see: " + itemName);
     }
 
     @Then("I see the selected item's {string}")
     public void i_see_the_products_text(String expected) {
-        String actual = itemPage.getItemDescriptionText();
+        String actual = hookTest.getItemPage().getItemDescriptionText();
         Assertions.assertEquals(expected, actual);
         System.out.println("I see the selected item's description");
     }
 
     @After
-    public void tearDown() {
-        driver.quit();
+    public void after() {
+        hookTest.tearDown();
     }
 }

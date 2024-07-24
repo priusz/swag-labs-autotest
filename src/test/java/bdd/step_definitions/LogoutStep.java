@@ -13,42 +13,38 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LogoutStep {
 
-    private WebDriver driver;
-    private LoginPage loginPage;
-    private HomePage homePage;
+    private HookTest hookTest;
     private final String password = System.getenv("password");
     private final String url = System.getenv("base_url");
 
     @Before
-    public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        loginPage = new LoginPage(driver);
-        homePage = new HomePage(driver);
+    public void before() {
+        hookTest = new HookTest();
+        hookTest.getDriver().manage().window().maximize();
     }
 
     @Given("I am a logged in user as {string}")
     public void i_am_a_logged_in_user(String username) {
-        driver.get(url);
-        loginPage.handleLogin(username, password);
+        hookTest.getDriver().get(url);
+        hookTest.getLoginPage().handleLogin(username, password);
         System.out.println("I am logging in user as " + username);
     }
 
     @When("I try to log out")
     public void i_try_to_log_out() {
-        homePage.handleLogout();
+        hookTest.getHomePage().handleLogout();
         System.out.println("I click on the logout button");
     }
 
     @Then("I see the login button")
     public void i_see_the_login_button() {
-        boolean isLoginButtonPresent = loginPage.isLoginButtonPresent();
+        boolean isLoginButtonPresent = hookTest.getLoginPage().isLoginButtonPresent();
         Assertions.assertTrue(isLoginButtonPresent);
         System.out.println("I see the login button");
     }
 
     @After
-    public void tearDown() {
-        driver.quit();
+    public void after() {
+        hookTest.tearDown();
     }
 }

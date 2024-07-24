@@ -15,26 +15,24 @@ import java.util.List;
 
 public class OrderItemsStep {
 
-    private WebDriver driver;
-    private HomePage homePage;
+    private HookTest hookTest;
 
     @Before
-    public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        homePage = new HomePage(driver);
+    public void before() {
+        hookTest = new HookTest();
+        hookTest.getDriver().manage().window().maximize();
     }
 
     @When("I try to order the items by {string}")
     public void i_try_to_order_the_items_by_filter(String filter) {
-        if (filter.equals("A - Z")) homePage.sortItemsByNamesAsc();
-        else if (filter.equals("Z - A")) homePage.sortItemsByNamesDesc();
+        if (filter.equals("A - Z")) hookTest.getHomePage().sortItemsByNamesAsc();
+        else if (filter.equals("Z - A")) hookTest.getHomePage().sortItemsByNamesDesc();
         System.out.println("Order the items by " + filter);
     }
 
     @Then("I see the ordered products")
     public void i_see_the_products_text() {
-        List<String> actual = homePage.getProductNamesInActualOrder();
+        List<String> actual = hookTest.getHomePage().getProductNamesInActualOrder();
         List<String> expected = new ArrayList<>(actual);
         Collections.sort(expected);
         Assertions.assertEquals(expected, actual);
@@ -42,7 +40,7 @@ public class OrderItemsStep {
     }
 
     @After
-    public void tearDown() {
-        driver.quit();
+    public void after() {
+        hookTest.tearDown();
     }
 }
