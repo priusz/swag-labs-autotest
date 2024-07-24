@@ -1,5 +1,6 @@
 package com.codecool.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -56,6 +57,7 @@ public class CartPage extends BasePage{
     }
 
     public void clickCheckoutButton() {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", checkoutButton);
         checkoutButton.click();
     }
 }

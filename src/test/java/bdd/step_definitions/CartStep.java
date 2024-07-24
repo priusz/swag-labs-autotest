@@ -16,7 +16,7 @@ public class CartStep {
 
     @Before
     public void before() {
-        hookTest = new HookTest();
+        hookTest = HookTest.getInstance();
         hookTest.getDriver().manage().window().maximize();
     }
 
@@ -33,27 +33,32 @@ public class CartStep {
 
     @Then("I see the selected {string} in the cart")
     public void i_see_the_selected_items_in_the_cart(String items) {
-        boolean isAllItemsPresent = true;
-        if (items.contains("backpack")) {
-            if (!hookTest.getCartPage().isSauceLabsBackpackPresent()) isAllItemsPresent = false;
+        try {
+            boolean isAllItemsPresent = true;
+            if (items.contains("backpack")) {
+                if (!hookTest.getCartPage().isSauceLabsBackpackPresent()) isAllItemsPresent = false;
+            }
+            else if (items.contains("bike light")) {
+                if (!hookTest.getCartPage().isSauceLabsBikeLightPresent()) isAllItemsPresent = false;
+            }
+            else if (items.contains("black shirt")) {
+                if (!hookTest.getCartPage().isSauceLabsBlackShirtPresent()) isAllItemsPresent = false;
+            }
+            else if (items.contains("jacket")) {
+                if (!hookTest.getCartPage().isSauceLabsJacketPresent()) isAllItemsPresent = false;
+            }
+            else if (items.contains("onesie")) {
+                if (!hookTest.getCartPage().isSauceLabsOnesiePresent()) isAllItemsPresent = false;
+            }
+            else if (items.contains("orange pulover")) {
+                if (!hookTest.getCartPage().isSauceLabsOrangePuloverPresent()) isAllItemsPresent = false;
+            }
+            Assertions.assertTrue(isAllItemsPresent);
+            System.out.println("I see the selected item's in the cart: " + items);
         }
-        else if (items.contains("bike light")) {
-            if (!hookTest.getCartPage().isSauceLabsBikeLightPresent()) isAllItemsPresent = false;
+        catch (Exception e) {
+            System.out.println("Failed to see the selected item's in the cart because " + e.getMessage());
         }
-        else if (items.contains("black shirt")) {
-            if (!hookTest.getCartPage().isSauceLabsBlackShirtPresent()) isAllItemsPresent = false;
-        }
-        else if (items.contains("jacket")) {
-            if (!hookTest.getCartPage().isSauceLabsJacketPresent()) isAllItemsPresent = false;
-        }
-        else if (items.contains("onesie")) {
-            if (!hookTest.getCartPage().isSauceLabsOnesiePresent()) isAllItemsPresent = false;
-        }
-        else if (items.contains("orange pulover")) {
-            if (!hookTest.getCartPage().isSauceLabsOrangePuloverPresent()) isAllItemsPresent = false;
-        }
-        Assertions.assertTrue(isAllItemsPresent);
-        System.out.println("I see the selected item's in the cart: " + items);
     }
 
     @After

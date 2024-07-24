@@ -6,23 +6,49 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 
 public class HookTest {
 
-    private final WebDriver driver = new ChromeDriver();
-    private final CartPage cartPage = new CartPage(driver);
-    private final CheckOutPage checkOutPage = new CheckOutPage(driver);
-    private final HomePage homePage = new HomePage(driver);
-    private final ItemPage itemPage = new ItemPage(driver);
-    private final LoginPage loginPage = new LoginPage(driver);
+    private static HookTest instance;
+    private WebDriver driver;
+    private CartPage cartPage;
+    private CheckOutPage checkOutPage;
+    private HomePage homePage;
+    private ItemPage itemPage;
+    private LoginPage loginPage;
 
+    private HookTest() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-first-run");
+        options.addArguments("--no-default-browser-check");
+        options.addArguments("--disable-default-apps");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--disable-popup-blocking");
+        options.addArguments("--start-maximized");
+        driver = new ChromeDriver(options);
+
+        cartPage = new CartPage(driver);
+        checkOutPage = new CheckOutPage(driver);
+        homePage = new HomePage(driver);
+        itemPage = new ItemPage(driver);
+        loginPage = new LoginPage(driver);
+    }
+
+    public static HookTest getInstance() {
+        if (instance == null) {
+            instance = new HookTest();
+        }
+        return instance;
+    }
 
     public WebDriver getDriver() {
         return driver;
     }
+
     public LoginPage getLoginPage() {
         return loginPage;
     }
@@ -44,7 +70,10 @@ public class HookTest {
     }
 
     public void tearDown() {
-
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+            instance = null;
+        }
     }
 }

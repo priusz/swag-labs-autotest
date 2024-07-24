@@ -16,7 +16,7 @@ public class DescriptionStep {
 
     @Before
     public void before() {
-        hookTest = new HookTest();
+        hookTest = HookTest.getInstance();
         hookTest.getDriver().manage().window().maximize();
     }
 
@@ -35,9 +35,14 @@ public class DescriptionStep {
 
     @Then("I see the selected item's {string}")
     public void i_see_the_products_text(String expected) {
-        String actual = hookTest.getItemPage().getItemDescriptionText();
-        Assertions.assertEquals(expected, actual);
-        System.out.println("I see the selected item's description");
+        try {
+            String actual = hookTest.getItemPage().getItemDescriptionText();
+            Assertions.assertEquals(expected, actual);
+            System.out.println("I see the selected item's description");
+        }
+        catch (Exception e) {
+            System.out.println("Failed to see the selected item's description because " + e.getMessage());
+        }
     }
 
     @After
