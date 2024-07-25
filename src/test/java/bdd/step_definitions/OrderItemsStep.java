@@ -3,6 +3,7 @@ package bdd.step_definitions;
 import com.codecool.pages.HomePage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
@@ -19,14 +20,9 @@ public class OrderItemsStep {
 
     private HookTest hookTest;
 
-    @Before
-    public void before() throws MalformedURLException, URISyntaxException {
-        hookTest = HookTest.getInstance("chrome");
-        hookTest.getDriver().manage().window().maximize();
-    }
-
     @When("I try to order the items by {string}")
-    public void i_try_to_order_the_items_by_filter(String filter) {
+    public void i_try_to_order_the_items_by_filter(String filter) throws MalformedURLException, URISyntaxException {
+        hookTest = HookTest.getInstance(null);
         if (filter.equals("A - Z")) hookTest.getHomePage().sortItemsByNamesAsc();
         else if (filter.equals("Z - A")) hookTest.getHomePage().sortItemsByNamesDesc();
         System.out.println("Order the items by " + filter);
@@ -47,8 +43,4 @@ public class OrderItemsStep {
         }
     }
 
-    @After
-    public void after() {
-        hookTest.tearDown();
-    }
 }

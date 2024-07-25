@@ -16,14 +16,9 @@ public class CheckoutStep {
 
     private HookTest hookTest;
 
-    @Before
-    public void before() throws MalformedURLException, URISyntaxException {
-        hookTest = HookTest.getInstance("chrome");
-        hookTest.getDriver().manage().window().maximize();
-    }
-
     @When("I add to the cart some {string} and click on checkout")
-    public void i_add_to_the_cart_some_items(String items) {
+    public void i_add_to_the_cart_some_items(String items) throws MalformedURLException, URISyntaxException {
+        hookTest = HookTest.getInstance(null);
         if (items.contains("backpack")) hookTest.getHomePage().clickOnBackPackAddToCartButton();
         else if (items.contains("bike light")) hookTest.getHomePage().clickOnBikeLightAddToCartButton();
         else if (items.contains("black shirt")) hookTest.getHomePage().clickOnBlackShirtAddToCartButton();

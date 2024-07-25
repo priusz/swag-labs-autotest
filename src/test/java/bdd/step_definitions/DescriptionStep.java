@@ -17,14 +17,9 @@ public class DescriptionStep {
 
   private HookTest hookTest;
 
-    @Before
-    public void before() throws MalformedURLException, URISyntaxException {
-        hookTest = HookTest.getInstance("chrome");
-        hookTest.getDriver().manage().window().maximize();
-    }
-
     @When("I want to see a description of an {string}")
-    public void i_want_to_see_a_description_of_an_item(String itemName) {
+    public void i_want_to_see_a_description_of_an_item(String itemName) throws MalformedURLException, URISyntaxException {
+        hookTest = HookTest.getInstance(null);
         switch (itemName) {
             case "backpack" -> hookTest.getHomePage().clickOnBackpackHeader();
             case "bike light" -> hookTest.getHomePage().clickOnBikeLightHeader();
@@ -46,10 +41,5 @@ public class DescriptionStep {
         catch (Exception e) {
             System.out.println("Failed to see the selected item's description because " + e.getMessage());
         }
-    }
-
-    @After
-    public void after() {
-        hookTest.tearDown();
     }
 }

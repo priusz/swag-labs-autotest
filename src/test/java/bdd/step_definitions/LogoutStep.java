@@ -20,14 +20,10 @@ public class LogoutStep {
     private final String password = System.getenv("password");
     private final String url = System.getenv("base_url");
 
-    @Before
-    public void before() throws MalformedURLException, URISyntaxException {
-        hookTest = HookTest.getInstance("chrome");
-        hookTest.getDriver().manage().window().maximize();
-    }
 
-    @Given("I am a logged in user as {string}")
-    public void i_am_a_logged_in_user(String username) {
+    @Given("I am a logged in user as {string}, using {string}")
+    public void i_am_a_logged_in_user(String username, String browser) throws MalformedURLException, URISyntaxException {
+        hookTest = HookTest.getInstance(browser);
         hookTest.getDriver().get(url);
         hookTest.getLoginPage().handleLogin(username, password);
         System.out.println("I am logging in user as " + username);
@@ -50,10 +46,5 @@ public class LogoutStep {
             System.out.println("Failed to see the login button because " + e.getMessage());
         }
 
-    }
-
-    @After
-    public void after() {
-        hookTest.tearDown();
     }
 }
