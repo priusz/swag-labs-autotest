@@ -23,16 +23,10 @@ public class LoginStep {
     private final String password = System.getenv("password");
     private final String url = System.getenv("base_url");
 
-    @Before
-    public void before() throws MalformedURLException, URISyntaxException {
-
-    }
-
     @Given("I am a registered user, using {string}")
     public void i_am_a_registered_user(String browser) throws MalformedURLException, URISyntaxException {
         hookTest = HookTest.getInstance(browser);
         hookTest.getDriver().get(url);
-        hookTest.getDriver().manage().window().maximize();
         System.out.println("Registered user");
     }
 
@@ -54,9 +48,5 @@ public class LoginStep {
             System.out.println("Failed to see the Product text, because " + e.getMessage());
         }
 
-    }
-    @After
-    public void after() {
-        hookTest.tearDown();
     }
 }
