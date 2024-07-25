@@ -31,15 +31,15 @@ public class DescriptionStep {
         System.out.println("I click on an item, what i want to see: " + itemName);
     }
 
-    @Then("I see the selected item's {string}")
-    public void i_see_the_products_text(String expected) {
+    @Then("I see the selected item's {string}, using {string}")
+    public void i_see_the_products_text(String expected, String browser) {
         try {
             String actual = hookTest.getItemPage().getItemDescriptionText();
             Assertions.assertEquals(expected, actual);
             System.out.println("I see the selected item's description");
         }
         catch (Exception e) {
-            System.out.println("Failed to see the selected item's description because " + e.getMessage());
+            System.out.println("Failed to see the selected item's description using " + browser + ", because " + e.getMessage());
         }
     }
 }

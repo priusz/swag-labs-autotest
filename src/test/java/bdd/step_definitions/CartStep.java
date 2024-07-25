@@ -29,8 +29,8 @@ public class CartStep {
         System.out.println("I add items to the cart: " + items);
     }
 
-    @Then("I see the selected {string} in the cart")
-    public void i_see_the_selected_items_in_the_cart(String items) {
+    @Then("I see the selected {string} in the cart, using {string}")
+    public void i_see_the_selected_items_in_the_cart(String items, String browser) {
         try {
             boolean isAllItemsPresent = true;
             if (items.contains("backpack")) {
@@ -55,7 +55,7 @@ public class CartStep {
             System.out.println("I see the selected item's in the cart: " + items);
         }
         catch (Exception e) {
-            System.out.println("Failed to see the selected item's in the cart because " + e.getMessage());
+            System.out.println("Failed to see the selected item's in the cart using " + browser + ", because " + e.getMessage());
         }
     }
 

@@ -3,7 +3,7 @@ Feature: Logout Feature
   Scenario Outline: Logout
     Given I am a logged in user as "<username>", using "<browser>"
     When I try to log out
-    Then I see the login button
+    Then I see the login button, using "<browser>"
 
     Examples:
       | username                | browser |

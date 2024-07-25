@@ -3,7 +3,7 @@ Feature: Checkout
   Scenario Outline: Checkout
     Given I am a logged in user as "<username>", using "<browser>"
     When I add to the cart some "<items>" and click on checkout
-    Then I can checkout and finish my order with "<firstname>" "<lastname>" "<postalCode>"
+    Then I can checkout and finish my order with "<firstname>" "<lastname>" "<postalCode>", using "<browser>"
 
     Examples:
       | username      | items                   | firstname  | lastname  | postalCode |browser |

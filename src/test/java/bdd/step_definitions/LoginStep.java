@@ -36,8 +36,8 @@ public class LoginStep {
         System.out.println("Type in the username and the password");
     }
 
-    @Then("I see the products text")
-    public void i_see_the_products_text() {
+    @Then("I see the products text, using {string}")
+    public void i_see_the_products_text(String browser) {
         try {
             String actual = hookTest.getHomePage().getProductTextField();
             String expected = "Products";
@@ -45,7 +45,7 @@ public class LoginStep {
             System.out.println("I see the Product text");
         }
         catch (Exception e) {
-            System.out.println("Failed to see the Product text, because " + e.getMessage());
+            System.out.println("Failed to see the Product text using " + browser + ", because " + e.getMessage());
         }
 
     }

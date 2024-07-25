@@ -3,7 +3,7 @@ Feature: Cart
   Scenario Outline: Check the cart
     Given I am a logged in user as "<username>", using "<browser>"
     When I add to the cart some "<items>"
-    Then I see the selected "<items>" in the cart
+    Then I see the selected "<items>" in the cart, using "<browser>"
 
     Examples:
       | username      | items                   | browser |

@@ -3,7 +3,7 @@ Feature: Login Feature
   Scenario Outline: Login with correct input scenario
     Given I am a registered user, using "<browser>"
     When I try to login with "<username>"
-    Then I see the products text
+    Then I see the products text, using "<browser>"
 
     Examples:
       | username                | browser |
