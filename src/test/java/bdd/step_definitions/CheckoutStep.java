@@ -30,7 +30,7 @@ public class CheckoutStep {
         System.out.println("I add items to the cart: " + items);
     }
 
-    @Then("I can checkout and finish my order with {string} {string} {string}, using string}")
+    @Then("I can checkout and finish my order with {string} {string} {string}, using {string}")
     public void i_see_the_selected_items_in_the_cart(String firstname, String lastname, String postalCode, String browser) {
         try {
             hookTest.getCheckOutPage().handleAddInformations(firstname, lastname, postalCode);
@@ -42,10 +42,5 @@ public class CheckoutStep {
         catch (Exception e) {
             System.out.println("Failed to finish and checkout my order using " + browser + ", because " + e.getMessage());
         }
-    }
-
-    @After
-    public void after() {
-        hookTest.tearDown();
     }
 }
