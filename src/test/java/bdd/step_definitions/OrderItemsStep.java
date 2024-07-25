@@ -28,8 +28,8 @@ public class OrderItemsStep {
         System.out.println("Order the items by " + filter);
     }
 
-    @Then("I see the ordered products by {string}")
-    public void i_see_the_products_text(String filter) {
+    @Then("I see the ordered products by {string}, using {string}")
+    public void i_see_the_products_text(String filter, String browser) {
         try {
             List<String> actual = hookTest.getHomePage().getProductNamesInActualOrder();
             List<String> expected = new ArrayList<>(actual);
@@ -39,7 +39,7 @@ public class OrderItemsStep {
             System.out.println("I see the ordered products");
         }
         catch (Exception e) {
-            System.out.println("Failed to see the ordered products because " + e.getMessage());
+            System.out.println("Failed to see the ordered products using " + browser + ", because " + e.getMessage());
         }
     }
 

@@ -3,7 +3,7 @@ Feature: Description
   Scenario Outline: See the description
     Given I am a logged in user as "<username>", using "<browser>"
     When I want to see a description of an "<item>"
-    Then I see the selected item's "<description>"
+    Then I see the selected item's "<description>", using "<browser>"
 
     Examples:
       | username      | item           | description                                                                                                                                                            | browser |

@@ -35,15 +35,15 @@ public class LogoutStep {
         System.out.println("I click on the logout button");
     }
 
-    @Then("I see the login button")
-    public void i_see_the_login_button() {
+    @Then("I see the login button, using {string}")
+    public void i_see_the_login_button(String browser) {
         try {
             boolean isLoginButtonPresent = hookTest.getLoginPage().isLoginButtonPresent();
             Assertions.assertTrue(isLoginButtonPresent);
             System.out.println("I see the login button");
         }
         catch (Exception e) {
-            System.out.println("Failed to see the login button because " + e.getMessage());
+            System.out.println("Failed to see the login button using " + browser + ", because " + e.getMessage());
         }
 
     }
