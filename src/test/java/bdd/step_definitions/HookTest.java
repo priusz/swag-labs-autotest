@@ -2,11 +2,7 @@ package bdd.step_definitions;
 
 import com.codecool.pages.*;
 import com.codecool.utils.Util;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
@@ -20,9 +16,11 @@ public class HookTest {
     private HomePage homePage;
     private ItemPage itemPage;
     private LoginPage loginPage;
+    private Util util;
 
-    private HookTest() {
-        driver = new ChromeDriver();
+    private HookTest(String browser) throws MalformedURLException, URISyntaxException {
+        util = new Util();
+        driver = util.createBrowserDriver(browser);
         cartPage = new CartPage(driver);
         checkOutPage = new CheckOutPage(driver);
         homePage = new HomePage(driver);
@@ -30,9 +28,9 @@ public class HookTest {
         loginPage = new LoginPage(driver);
     }
 
-    public static HookTest getInstance() {
+    public static HookTest getInstance(String browser) throws MalformedURLException, URISyntaxException {
         if (instance == null) {
-            instance = new HookTest();
+            instance = new HookTest(browser);
         }
         return instance;
     }
