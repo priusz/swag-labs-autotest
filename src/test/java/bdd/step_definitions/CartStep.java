@@ -10,13 +10,16 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+
 public class CartStep {
 
     private HookTest hookTest;
 
     @Before
-    public void before() {
-        hookTest = HookTest.getInstance();
+    public void before() throws MalformedURLException, URISyntaxException {
+        hookTest = HookTest.getInstance("chrome");
         hookTest.getDriver().manage().window().maximize();
     }
 
