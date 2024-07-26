@@ -1,4 +1,4 @@
 # swag-labs-autotest
 
-In this project we testing the Swag Labs website.
-We use BDD, Selenium Grid and parametrized tests.
+In this project different test cases have been implemented to the Swag Labs website.
+With the use of Selenium Grid and parameterized BDD.
