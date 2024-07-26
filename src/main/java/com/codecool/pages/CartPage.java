@@ -32,7 +32,7 @@ public class CartPage extends BasePage{
     @FindBy(id = "checkout")
     private WebElement checkoutButton;
 
-    public boolean isSauceLabsBackpackPresent() {
+    public boolean isSauceLabsBackpackPresent() {  // duplication removal
         return sauceLabsBackpack.isDisplayed();
     }
 
@@ -53,7 +53,11 @@ public class CartPage extends BasePage{
     }
 
     public boolean isSauceLabsOrangePuloverPresent() {
-        return sauceLabsOrangePulover.isDisplayed();
+        return isElementDisplayed(sauceLabsOrangePulover);
+    }
+
+    private boolean isElementDisplayed(WebElement element) {
+        return element.isDisplayed();
     }
 
     public void clickCheckoutButton() {

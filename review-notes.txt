@@ -1,0 +1,5 @@
+~ .idea folder in repo :( :'(
+~ docker compose file should be named in a way that reflects
+that it does not run the project but sets up some infrastructure
+    ~ e.g. grid.docker-compose.yml
+~ nice readme pls <3

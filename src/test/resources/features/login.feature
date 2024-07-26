@@ -19,3 +19,14 @@ Feature: Login Feature
       | performance_glitch_user | firefox |
       | error_user              | firefox |
       | visual_user             | firefox |
+  
+  Scenario Outline: Login with incorrect input scenario
+    Given I am using "<browser>"
+    When I try to login with "<username>" and "<password>"
+    Then I see the epic sadface error message
+
+    Examples:
+      | username | password | browser |
+      |          |          | firefox |
+      |          |          | chrome  |
+      | user     | secret_sauce | firefox |
