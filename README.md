@@ -62,14 +62,20 @@ Before setting up the project, ensure you have the following tools installed:
    git clone https://github.com/priusz/swag-labs-autotest.git
    cd swag-labs-autotest
    ```
+   
+2. **Set up Environment Variables**
 
-2. **Set up Selenium Grid with Docker**
+    ```bash
+       export base_url=https://www.saucedemo.com/ password=secret_sauce
+    ```
+
+3. **Set up Selenium Grid with Docker**
 
     ```bash
    docker-compose up -d
    ```
 
-3. **Install dependencies**
+4. **Install dependencies**
 
     ```bash
    mvn clean install
