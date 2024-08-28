@@ -1,10 +1,10 @@
 # Swag Labs AutoTest
 
-![GitHub Contributors](https://img.shields.io/github/contributors/priusz/swag-labs-autotest)
-![GitHub Forks](https://img.shields.io/github/forks/priusz/swag-labs-autotest?style=social)
-![GitHub Stars](https://img.shields.io/github/stars/priusz/swag-labs-autotest?style=social)
-![GitHub Issues](https://img.shields.io/github/issues/priusz/swag-labs-autotest)
-![License](https://img.shields.io/github/license/priusz/swag-labs-autotest)
+[![GitHub Contributors][contributors-shield]][contributors-url]
+[![GitHub Forks][forks-shield]][forks-url]
+[![GitHub Stars][stars-shield]][stars-url]
+[![GitHub Issues][issues-shield]][issues-url]
+
 
  **priusz:** 
  
@@ -137,3 +137,19 @@ docker-compose.yml: Configuration for setting up the Selenium Grid with Docker.
 [cucumber-shield]: https://img.shields.io/badge/Cucumber-6.10.4-brightgreen.svg
 
 [cucumber-url]: https://cucumber.io/
+
+[contributors-shield]: https://img.shields.io/github/contributors/priusz/swag-labs-autotest
+
+[contributors-url]: https://github.com/priusz/swag-labs-autotest/graphs/contributors
+
+[forks-shield]: https://img.shields.io/github/forks/priusz/swag-labs-autotest?style=social
+
+[forks-url]: https://github.com/priusz/swag-labs-autotest/forks
+
+[stars-shield]: https://img.shields.io/github/stars/priusz/swag-labs-autotest?style=social
+
+[stars-url]: https://github.com/priusz/swag-labs-autotest/stargazers
+
+[issues-shield]: https://img.shields.io/github/issues/priusz/swag-labs-autotest
+
+[issues-url]: https://github.com/priusz/swag-labs-autotest/issues
