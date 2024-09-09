@@ -14,6 +14,10 @@
 
 [![LinkedIn][linkedin-shield]][linkedin-url-two]
 
+**idlewombat:** 
+
+[![LinkedIn][linkedin-shield]][linkedin-url-three]
+
 This repository contains automated tests for the [Swag Labs](https://www.saucedemo.com/) web application, developed
 using Selenium Grid, Docker, and Behavior-Driven Development (BDD) principles. The project aims to demonstrate scalable
 and maintainable test automation practices.
@@ -121,6 +125,8 @@ docker-compose.yml: Configuration for setting up the Selenium Grid with Docker.
 [linkedin-url-one]: https://www.linkedin.com/in/timeaboros-priusz/
 
 [linkedin-url-two]: https://www.linkedin.com/in/soma-sarkadi-nagy/
+
+[linkedin-url-three]: https://www.linkedin.com/in/bence-futasz/
 
 [selenium-shield]: https://img.shields.io/badge/-selenium-CB02A?style=for-the-badge&logo=selenium&logoColor=white
 
