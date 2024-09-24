@@ -69,10 +69,15 @@ Before setting up the project, ensure you have the following tools installed:
    
 2. **Set up Environment Variables**
 
+    Linux / macOS:
     ```bash
-       export base_url=https://www.saucedemo.com/ password=secret_sauce
+    export base_url=https://www.saucedemo.com/ password=secret_sauce
     ```
-
+   Windows:
+    ```bash
+    set base_url=https://www.saucedemo.com/
+    set password=secret_sauce
+    ```
 3. **Set up Selenium Grid with Docker**
 
     ```bash
